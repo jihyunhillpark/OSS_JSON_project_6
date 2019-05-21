@@ -1,0 +1,17 @@
+{
+	"name":"jsmn",
+	"keywords":json",
+	"repository":
+	{
+	  "type":"git,
+	  "url":"https://github.git"
+	},
+	"platforms" : "*",
+	"examples" : 
+	[
+	  "example/*.c",
+	  "abcd",
+	   4534
+	],
+	"exclude":"test"
+}
