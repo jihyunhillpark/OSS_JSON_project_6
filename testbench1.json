@@ -1,9 +1,9 @@
 {
 	"name":"jsmn",
-	"keywords":json",
+	"keywords":"json",
 	"repository":
 	{
-	  "type":"git,
+	  "type":"git",
 	  "url":"https://github.git"
 	},
 	"platforms" : "*",
