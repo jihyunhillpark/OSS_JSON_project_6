@@ -156,7 +156,12 @@ int main (int argc,char **argv){
                 break;
             
             default:
-                
+                js_parse_primitive(&p,data,strlen(data),tokens,1024);
+                count++;
+                if(p.toksuper != -1){
+                    tokens[p.toksuper].size++;
+                }
+                break;
 
 
 
@@ -164,9 +169,6 @@ int main (int argc,char **argv){
 
     }
     
-
-
-
 
 }
 
@@ -238,19 +240,25 @@ static int js_parse_primitive(js_parser *parser, const char *js,
   start = parser->pos;
 
   for (; parser->pos < len && js[parser->pos] != '\0'; parser->pos++) {
-    
+    switch(js[parser->pos]){
+        case ' ':
+        case ',':
+        case ']':
+        case '}':
+            token=js_alloc_token(parser,tokens,num_tokens);
+            if(token==NULL){
+                parser->pos = start;
+                return NOTOKEN;
+            }
+            js_fill_token(token,PRIMITIVE,start,parser->pos);
+            parser->pos--;
+            return 0;
+    }
    
   }
 
 
 
   
-  token = jsmn_alloc_token(parser, tokens, num_tokens);
-  if (token == NULL) {
-    parser->pos = start;
-    return NOTOKEN;
-  }
-  jsmn_fill_token(token, JSMN_PRIMITIVE, start, parser->pos);
-  parser->pos--;
-  return 0;
+ 
 }
