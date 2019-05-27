@@ -1,5 +1,6 @@
 {
 	
-	"example" : false
+	"example" : true,
+	"name" : ["ABC","EDD"]
 	
 }
