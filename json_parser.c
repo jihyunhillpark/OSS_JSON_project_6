@@ -31,7 +31,7 @@ typedef enum {
   INVALID = -2,
   /* The string is not a full JSON packet, more bytes expected */
   JSON_ERROR = -3
-};
+}js_error;
 
 /*Function Declaration*/
 static void js_parser_init(js_parser *parser);
@@ -120,9 +120,11 @@ int main (int argc,char **argv){
                         }
                         p.toksuper = -1;
                         token->end = p.pos + 1;
-                    break;
+                        break;
                     }
                 }
+                break;
+
             case '\"':
                 js_parse_string(&p,data,strlen(data),tokens,1024);
                 count++;
