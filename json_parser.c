@@ -75,13 +75,31 @@ int main (int argc,char **argv){
     js_parser p;
     js_parser_init(&p); //Initialize
     int count = p.toknext;
+    int pair_count=0;
     int r;
     int i;
+    int flag=1;
   
-  
+    p.pos = 1;// skip first '{'
+    for(;p.pos<strlen(data) && data[p.pos]!='\0';p.pos++){
+        /*for token size of tokens[0]*/
+        char d;
+        d=data[p.pos];
+        if(d=='{')
+            flag = 0;
+        if(d=='}')
+            flag = 1;
 
+        if(d==':'&& flag) pair_count ++;
+    }
+    
+
+
+    js_parser_init(&p); //Initialize
     /*Sweeping all Data*/
     for(;p.pos<strlen(data) && data[p.pos]!='\0';p.pos++){
+
+
 
         char c;
         type_t type;
@@ -170,6 +188,7 @@ int main (int argc,char **argv){
         }
 
     }
+    tokens[0].size=pair_count;
     
 
 }
