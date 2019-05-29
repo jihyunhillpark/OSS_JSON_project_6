@@ -212,6 +212,7 @@ int main (int argc,char **argv){
         j++;
         toktok = &tokens[j];
     }
+    fclose(fp2);
 
 }
 
