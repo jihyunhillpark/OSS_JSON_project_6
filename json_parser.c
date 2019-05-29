@@ -190,19 +190,29 @@ int main (int argc,char **argv){
     }
     tokens[0].size=pair_count;
 
+    /*print out information of tokens*/
     js_parser_init(&p); 
     int j = 0;
     tok_t* toktok = &tokens[j];
-    FILE *fp2 = fopen("mams.txt","w+");
-    //while (toktok != NULL) {
+    FILE *fp2 = fopen("tokens_info.txt","w+");
+    char* token_type;
+
     for(int a;a<count;a++){
-    
-        fprintf(fp2,"[%d] ", j);
-        fprintf(fp2,"%.*s\n", (toktok->end) - (toktok->start), data + (toktok->start));
+
+        switch(toktok->type){
+        case 0: token_type = "UNDEFINED"; break;
+        case 1: token_type = "OBJECT"; break;
+        case 2: token_type = "ARRAY"; break;
+        case 3: token_type = "STRING"; break;
+        case 4: token_type = "PRIMITIVE"; break;
+    }
+        fprintf(fp2,"[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
+        fprintf(fp2,"(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
+
         j++;
         toktok = &tokens[j];
     }
-    //}    
+
 }
 
 /*Function Definition*/
