@@ -1,0 +1,50 @@
+[0] { "BASIC COFFEE": [ { "name":"CAFE TEA", "price":5.50 }, { "name":"CAPPUCCINO", "price":6.50 }, { "name":"ESPRESSO", "price":6.75 }, { "name":"CAFE MOCHA", "price":6.75 }, { "name":"CAFE CHAI", "price":5.50 } ], "LATTE & MACCHIATO": [ { "name":"CAFE LATTE", "price":6.50 }, { "name":"VANILLA BEAN LATTE", "price":7.25 }, { "name":"ACAI & BERRY LATTE", "price":7.50 }, { "name":"MATCHA MACCHIATO", "price":8.00 } ] }
+[1] BASIC COFFEE
+[2] [ { "name":"CAFE TEA", "price":5.50 }, { "name":"CAPPUCCINO", "price":6.50 }, { "name":"ESPRESSO", "price":6.75 }, { "name":"CAFE MOCHA", "price":6.75 }, { "name":"CAFE CHAI", "price":5.50 } ]
+[3] { "name":"CAFE TEA", "price":5.50 }
+[4] name
+[5] CAFE TEA
+[6] price
+[7] 5.50
+[8] { "name":"CAPPUCCINO", "price":6.50 }
+[9] name
+[10] CAPPUCCINO
+[11] price
+[12] 6.50
+[13] { "name":"ESPRESSO", "price":6.75 }
+[14] name
+[15] ESPRESSO
+[16] price
+[17] 6.75
+[18] { "name":"CAFE MOCHA", "price":6.75 }
+[19] name
+[20] CAFE MOCHA
+[21] price
+[22] 6.75
+[23] { "name":"CAFE CHAI", "price":5.50 }
+[24] name
+[25] CAFE CHAI
+[26] price
+[27] 5.50
+[28] LATTE & MACCHIATO
+[29] [ { "name":"CAFE LATTE", "price":6.50 }, { "name":"VANILLA BEAN LATTE", "price":7.25 }, { "name":"ACAI & BERRY LATTE", "price":7.50 }, { "name":"MATCHA MACCHIATO", "price":8.00 } ]
+[30] { "name":"CAFE LATTE", "price":6.50 }
+[31] name
+[32] CAFE LATTE
+[33] price
+[34] 6.50
+[35] { "name":"VANILLA BEAN LATTE", "price":7.25 }
+[36] name
+[37] VANILLA BEAN LATTE
+[38] price
+[39] 7.25
+[40] { "name":"ACAI & BERRY LATTE", "price":7.50 }
+[41] name
+[42] ACAI & BERRY LATTE
+[43] price
+[44] 7.50
+[45] { "name":"MATCHA MACCHIATO", "price":8.00 }
+[46] name
+[47] MATCHA MACCHIATO
+[48] price
+[49] 8.00

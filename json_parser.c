@@ -193,11 +193,12 @@ int main (int argc,char **argv){
     js_parser_init(&p); 
     int j = 0;
     tok_t* toktok = &tokens[j];
+    FILE *fp2 = fopen("mams.txt","w+");
     //while (toktok != NULL) {
     for(int a;a<count;a++){
     
-        printf("[%d] ", j);
-        printf("%.*s\n", (toktok->end) - (toktok->start), data + (toktok->start));
+        fprintf(fp2,"[%d] ", j);
+        fprintf(fp2,"%.*s\n", (toktok->end) - (toktok->start), data + (toktok->start));
         j++;
         toktok = &tokens[j];
     }
