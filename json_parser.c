@@ -189,8 +189,19 @@ int main (int argc,char **argv){
 
     }
     tokens[0].size=pair_count;
-    
 
+    js_parser_init(&p); 
+    int j = 0;
+    tok_t* toktok = &tokens[j];
+    //while (toktok != NULL) {
+    for(int a;a<count;a++){
+    
+        printf("[%d] ", j);
+        printf("%.*s\n", (toktok->end) - (toktok->start), data + (toktok->start));
+        j++;
+        toktok = &tokens[j];
+    }
+    //}    
 }
 
 /*Function Definition*/
