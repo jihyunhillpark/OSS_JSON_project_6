@@ -194,7 +194,7 @@ int main (int argc,char **argv){
     js_parser_init(&p); 
     int j = 0;
     tok_t* toktok = &tokens[j];
-    FILE *fp2 = fopen("tokens_info.txt","w+");
+    /*FILE *fp2 = fopen("tokens_info.txt","w+");*/
     char* token_type;
 
     for(int a;a<count;a++){
@@ -205,14 +205,19 @@ int main (int argc,char **argv){
         case 2: token_type = "ARRAY"; break;
         case 3: token_type = "STRING"; break;
         case 4: token_type = "PRIMITIVE"; break;
-        }
+    }
+        /*
         fprintf(fp2,"[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
         fprintf(fp2,"(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
+        */
+
+        printf("[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
+        printf("(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
 
         j++;
         toktok = &tokens[j];
     }
-    fclose(fp2);
+    /*fclose(fp2);*/
 
 }
 
