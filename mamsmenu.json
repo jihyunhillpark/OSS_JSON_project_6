@@ -4,7 +4,9 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
+            }
+        },
+        {
             "lunchNdinner" : {
                 "name" : [ 
                     "소불고기뚝배기",
@@ -16,7 +18,6 @@
                 ],
                 "price" : 4000
             }
-     
         }
     ],
     "tuesday" : [
@@ -24,8 +25,9 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
-            "lunchNdinner" : {
+            }
+        },
+        {   "lunchNdinner" : {
                 "name" : [ 
                     "꽃게된장찌게",
                     "치킨스테이크",
@@ -36,7 +38,6 @@
                 ],
                 "price" : 4000
             }
-     
         }
     ],
     "wednesday" : [
@@ -44,8 +45,9 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
-            "lunchNdinner" : {
+            }
+        },
+        {   "lunchNdinner" : {
                 "name" : [ 
                     "김치갈비찜",
                     "참치횟밥",
@@ -56,7 +58,6 @@
                 ],
                 "price" : 4000
             }
-     
         }
     ],
     "thursday" : [
@@ -64,7 +65,10 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
+            }
+        },
+        {
+
             "lunchNdinner" : {
                 "name" : [ 
                     "닭도리탕",
@@ -76,7 +80,6 @@
                 ],
                 "price" : 4000
             }
-     
         }
     ],
     "friday" : [
@@ -84,7 +87,9 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
+            }
+        },
+        {
             "lunchNdinner" : {
                 "name" : [ 
                     "굴소스제육볶음",
@@ -96,7 +101,6 @@
                 ],
                 "price" : 4000
             }
-     
         }
     ],
     "saturday" : [
@@ -104,8 +108,9 @@
             "breakfast" : {
                 "name" : "빵식",
                 "price" : 4000
-            },
-            "lunchNdinner" : {
+            }
+        },
+        {   "lunchNdinner" : {
                 "name" : [ 
                     "동파육",
                     "스크램블치즈그라탕",
@@ -117,6 +122,48 @@
                 "price" : 4000
             }
      
+        }
+    ],
+    "users" : [
+        {
+            "name" : "김형준",
+            "stdID" : "21400240",
+            "history" : {
+                "monday - breakfast" : "빵식", 
+                "monday - lunch" : "냉면",
+                "monday - dinner" : "냉면",
+                "tuesday - lucnch" : "치킨슈니첼",
+                "tuesday - dinner" : "치킨슈니첼",
+                "wednesday - breakfast" : "빵식", 
+                "wednesday - lucnch" : "치킨슈니첼",
+                "wednesday - dinner" : "치킨슈니첼"
+            }
+        },
+        {
+            "name" : "박지현",
+            "stdID" : "21600301",
+            "history" : {
+                "monday - lunch" : "냉면",
+                "monday - dinner" : "냉면",
+                "tuesday - breakfast" : "빵식", 
+                "tuesday - lucnch" : "꽃게된장찌개",
+                "tuesday - dinner" : "치킨슈니첼",
+                "wednesday - breakfast" : "빵식", 
+                "wednesday - lucnch" : "참치횟밥",
+                "wednesday - dinner" : "치킨슈니첼"
+            }
+        },
+        {
+            "name" : "김대영",
+            "stdID" : "21800040",
+            "history" : {                
+                "monday - lunch" : "냉면",
+                "monday - dinner" : "냉면",
+                "tuesday - lucnch" : "꽃게된장찌개",
+                "tuesday - dinner" : "치킨슈니첼",
+                "wednesday - lucnch" : "참치횟밥",
+                "wednesday - dinner" : "김치말이국수와 유부초밥"
+            }
         }
     ]
 }
