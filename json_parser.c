@@ -45,7 +45,7 @@ int main (int argc,char **argv){
     /*File Read & Copy to Buffer*/
     FILE *fp;
     const int maxBufLen = 1000;
-    const int maxDataLen = 1000;
+    const int maxDataLen = 2000;
     char buffer[maxBufLen];
     char data[maxDataLen];
     fp=fopen(argv[1],"r");
