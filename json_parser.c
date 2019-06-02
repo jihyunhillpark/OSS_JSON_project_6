@@ -42,6 +42,7 @@ static int js_parse_primitive(js_parser *parser, const char *js,const int len, t
 char print_applicaion_menu();
 void print_tokens(js_parser *, tok_t *, char*, int);
 void print_week_plan_and_cost(tok_t *,char*,int count);
+void print_frequency_of_sepcific_meals(tok_t *, char *, int count);
 
 int main (int argc,char **argv){
     /*File Read & Copy to Buffer*/
@@ -197,8 +198,9 @@ int main (int argc,char **argv){
 
     switch(option)
     {
-        case 'r' : print_tokens(&p, tokens, data, count); break;
-        case '4' : print_week_plan_and_cost(tokens,data,count); break;
+        case '2' : print_frequency_of_sepcific_meals(tokens, data, count); break;
+        case '3' : print_week_plan_and_cost(tokens,data,count); break;
+        case '4' : print_tokens(&p, tokens, data, count); break;
     }
 
 }
@@ -206,11 +208,10 @@ char print_applicaion_menu()
 {
     char a;
     printf("==============================Options==============================\n");
-    printf("1. Show all menues this week.\n");
-    printf("2. Records for all users\n");
-    printf("3. For a user, how many times he/she's had specific menu this week.\n");
-    printf("4. How much a user's spent for mam's cafeteria this week.\n");
-    printf("* press r - Print out tokens\n");
+    printf("1. show the menu for a day of the week.\n");
+    printf("2. For a user, how many times he/she's had specific menu this week.\n");
+    printf("3. expenses of a user for mam's this week and show what user ate.\n");
+    printf("4. Print out tokens\n");
     printf("===================================================================\n");  
     scanf("%c", &a);
     getchar();
@@ -247,15 +248,21 @@ void print_tokens(js_parser* p, tok_t * tokens, char * data, int count)
     }
     /*fclose(fp2);*/
 }
-void print_week_plan_and_cost(tok_t* tokens, char* data, int count)
+void print_frequency_of_sepcific_meals(tok_t* tokens, char * data, int count)
 {
     char user[20] = { '\0',};
+    char sp_menu[50] = { '\0',};
     int i = 0;
     int c = 0;
     char sub[20] = {'\0',};
+    char sub_m[50] = {'\0',};
     int token_l;
-    printf("write user's name :");
+    tok_t * menu;
+    printf("write user and menu :");
     scanf("%s",user);
+    getchar();
+    scanf("%s",sp_menu);
+    getchar();
     
     while(i < count)
     {   
@@ -268,8 +275,67 @@ void print_week_plan_and_cost(tok_t* tokens, char* data, int count)
         //printf("%d",token_l);
         //printf("%s\n",  sub);
         if(strncmp(sub, user, strlen(user)) == 0){
+            
+            int meals = tokens[i + 4].size;
+            int meal_count = 0;
+            for ( c = 0; c < meals ; c++)
+            {
+                menu = &tokens[i+6];
+                int j = 0;
+                while (j < 20 && c < (menu -> end) - (menu->start)) {
+                    sub_m[j] = data[menu->start + j];
+                    ++j;
+                }
+                if(strncmp(sp_menu, sub_m , strlen(sp_menu)) == 0) meal_count++;
+                i+=2;
+
+            }
+            printf("%s ate %s %d times this week!\n", user, sp_menu, meal_count);
+            break;
+        } 
+        c = 0;
+        while ( c <20 ) {
+            sub[c] = '\0';
+            ++c;
+        }
+        i++;
+    }
+}
+void print_week_plan_and_cost(tok_t* tokens, char* data, int count)
+{
+    char user[20] = { '\0',};
+    int i = 0;
+    int c = 0;
+    char sub[20] = {'\0',};
+    int token_l;
+    tok_t * menu;
+    printf("write user's name :");
+    scanf("%s",user);
+    getchar();
+    
+    while(i < count)
+    {   
+        token_l = tokens[i].end - tokens[i].start;
+        c = 0;
+        while (c < 20 && c < token_l) {
+            sub[c] = data[(tokens[i].start) + c];
+            ++c;
+        }
+        //printf("%d",token_l);
+        //printf("%s\n",  sub);
+        if(strncmp(sub, user, strlen(user)) == 0){
+            int meals = tokens[i + 4].size;
             printf("%s \'s ", user);
-            printf("total cost : %d\n", tokens[i + 4].size * 4000);
+            printf("total cost : %d\n\n", tokens[i + 4].size * 4000);
+            for ( c = 0; c < meals ; c++)
+            {
+                menu = &tokens[i+5];
+                printf("%.*s : ", (menu->end) - (menu->start), data + (menu->start));
+                menu = &tokens[i+6];
+                printf("%.*s\n", (menu->end) - (menu->start), data + (menu->start));
+                i+=2;
+            }
+            
             break;
         } 
         c = 0;
