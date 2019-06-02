@@ -39,13 +39,15 @@ static tok_t *js_alloc_token(js_parser *parser,tok_t *tokens,const int num_token
 static void js_fill_token(tok_t *token, const type_t type,const int start, const int end);
 static int js_parse_string(js_parser *parser, const char *js,const int len, tok_t *tokens,const int num_tokens);
 static int js_parse_primitive(js_parser *parser, const char *js,const int len, tok_t *tokens,const int num_tokens);
-
+char print_applicaion_menu();
+void print_tokens(js_parser *, tok_t *, char*, int);
+void print_week_plan_and_cost(tok_t *,char*,int count);
 
 int main (int argc,char **argv){
     /*File Read & Copy to Buffer*/
     FILE *fp;
     const int maxBufLen = 1000;
-    const int maxDataLen = 2000;
+    const int maxDataLen = 5000;
     char buffer[maxBufLen];
     char data[maxDataLen];
     fp=fopen(argv[1],"r");
@@ -190,8 +192,34 @@ int main (int argc,char **argv){
     }
     tokens[0].size=pair_count;
 
-    /*print out information of tokens*/
-    js_parser_init(&p); 
+    char option;
+    option = print_applicaion_menu();
+
+    switch(option)
+    {
+        case 'r' : print_tokens(&p, tokens, data, count); break;
+        case '4' : print_week_plan_and_cost(tokens,data,count); break;
+    }
+
+}
+char print_applicaion_menu()
+{
+    char a;
+    printf("==============================Options==============================\n");
+    printf("1. Show all menues this week.\n");
+    printf("2. Records for all users\n");
+    printf("3. For a user, how many times he/she's had specific menu this week.\n");
+    printf("4. How much a user's spent for mam's cafeteria this week.\n");
+    printf("* press r - Print out tokens\n");
+    printf("===================================================================\n");  
+    scanf("%c", &a);
+    getchar();
+    return a;
+}
+void print_tokens(js_parser* p, tok_t * tokens, char * data, int count)
+{
+   /*print out information of tokens*/
+    js_parser_init(p); 
     int j = 0;
     tok_t* toktok = &tokens[j];
     /*FILE *fp2 = fopen("tokens_info.txt","w+");*/
@@ -205,7 +233,7 @@ int main (int argc,char **argv){
         case 2: token_type = "ARRAY"; break;
         case 3: token_type = "STRING"; break;
         case 4: token_type = "PRIMITIVE"; break;
-    }
+        }
         /*
         fprintf(fp2,"[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
         fprintf(fp2,"(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
@@ -218,7 +246,39 @@ int main (int argc,char **argv){
         toktok = &tokens[j];
     }
     /*fclose(fp2);*/
-
+}
+void print_week_plan_and_cost(tok_t* tokens, char* data, int count)
+{
+    char user[20] = { '\0',};
+    int i = 0;
+    int c = 0;
+    char sub[20] = {'\0',};
+    int token_l;
+    printf("write user's name :");
+    scanf("%s",user);
+    
+    while(i < count)
+    {   
+        token_l = tokens[i].end - tokens[i].start;
+        c = 0;
+        while (c < 20 && c < token_l) {
+            sub[c] = data[(tokens[i].start) + c];
+            ++c;
+        }
+        //printf("%d",token_l);
+        //printf("%s\n",  sub);
+        if(strncmp(sub, user, strlen(user)) == 0){
+            printf("%s \'s ", user);
+            printf("total cost : %d\n", tokens[i + 4].size * 4000);
+            break;
+        } 
+        c = 0;
+        while ( c <20 ) {
+            sub[c] = '\0';
+            ++c;
+        }
+        i++;
+    }
 }
 
 /*Function Definition*/
@@ -237,7 +297,7 @@ static tok_t *js_alloc_token(js_parser *parser,tok_t *tokens,int num_tokens)
     }
     tok = &tokens[parser->toknext];
     parser->toknext++;
-    tok->start = tok->end = -1;
+    tok->start = tok->end = -1; 
     tok->size = 0;
     return tok;
 }

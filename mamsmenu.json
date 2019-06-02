@@ -65,7 +65,7 @@
     },
     "users" : [
         {
-            "name" : "김형준",
+            "name" : "Kimhyeongjune",
             "stdID" : "21400240",
             "history" : {
                 "monday - breakfast" : "빵식", 
@@ -79,7 +79,7 @@
             }
         },
         {
-            "name" : "박지현",
+            "name" : "Parkjihyun",
             "stdID" : "21600301",
             "history" : {
                 "monday - lunch" : "냉면",
@@ -93,7 +93,7 @@
             }
         },
         {
-            "name" : "김대영",
+            "name" : "Kimdaeyoung",
             "stdID" : "21800040",
             "history" : {                
                 "monday - lunch" : "냉면",
