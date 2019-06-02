@@ -2,7 +2,7 @@
   Start Date : 2019.5.16   
   Due Date : 2019.6.3  
   
-###Group6
+### Group6
   21400240 김형준  
   21600301 박지현  
   21800060 김대영   
@@ -22,12 +22,12 @@
 ## How do I get started?
   1. gcc 컴파일한다 : gcc -o json_parser.exe json_parser.c   
   2. 인자에 .json파일을 같이 넣어 실행한다 : ./jsonparser mamsmenu.git.
-  3. 1~4번 기능 중에 실행하고 싶은 기능의 숫자를 입력한다 : (ex)1
-     3-1. 1을 입력한 후 요일 입력 : (ex)monday
-     3-2. 2를 입력한 후 user이름과 메뉴 입력 : (ex)Kimhyeongjune 냉면
-     3-3. 3을 입력한 후 user이름 입력 : Kimdaeyoung
-     3-4. 4을 입력한 후 parsing 후 token에 대한 모든 내용 출력
-     
+  3. 1~4번 기능 중에 실행하고 싶은 기능의 숫자를 입력한다 : (ex)1    
+     3-1. 1을 입력한 후 요일 입력 : (ex)monday    
+     3-2. 2를 입력한 후 user이름과 메뉴 입력 : (ex)Kimhyeongjune 냉면    
+     3-3. 3을 입력한 후 user이름 입력 : Kimdaeyoung    
+     3-4. 4을 입력한 후 parsing 후 token에 대한 모든 내용 출력     
+          
 ## Where you need more help, please contact here   
   21400240@handong.edu (Hyeongjun,Kim)      
   21600301@handong.edu (Jihyun,Park)    
