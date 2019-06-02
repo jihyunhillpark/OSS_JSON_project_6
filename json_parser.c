@@ -208,9 +208,9 @@ char print_applicaion_menu()
 {
     char a;
     printf("==============================Options==============================\n");
-    printf("1. show the menu for a day of the week.\n");
-    printf("2. For a user, how many times he/she's had specific menu this week.\n");
-    printf("3. expenses of a user for mam's this week and show what user ate.\n");
+    printf("1. View menu by day\n");
+    printf("2. Frequency of specific menu by user.\n");
+    printf("3. Total expenditure on food expenses\n");
     printf("4. Print out tokens\n");
     printf("===================================================================\n");  
     scanf("%c", &a);
