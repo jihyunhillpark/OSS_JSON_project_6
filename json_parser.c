@@ -43,6 +43,8 @@ char print_applicaion_menu();
 void print_tokens(js_parser *, tok_t *, char*, int);
 void print_week_plan_and_cost(tok_t *,char*,int count);
 void print_frequency_of_sepcific_meals(tok_t *, char *, int count);
+void print_menu_of_day(tok_t *tokens,const char *js,int count);
+int jsoneq(const char *json, tok_t *tok,const char *s);
 
 int main (int argc,char **argv){
     /*File Read & Copy to Buffer*/
@@ -198,6 +200,7 @@ int main (int argc,char **argv){
 
     switch(option)
     {
+        case '1' : print_menu_of_day(tokens,data,count);break;
         case '2' : print_frequency_of_sepcific_meals(tokens, data, count); break;
         case '3' : print_week_plan_and_cost(tokens,data,count); break;
         case '4' : print_tokens(&p, tokens, data, count); break;
@@ -217,37 +220,31 @@ char print_applicaion_menu()
     getchar();
     return a;
 }
-void print_tokens(js_parser* p, tok_t * tokens, char * data, int count)
-{
-   /*print out information of tokens*/
-    js_parser_init(p); 
-    int j = 0;
-    tok_t* toktok = &tokens[j];
-    /*FILE *fp2 = fopen("tokens_info.txt","w+");*/
-    char* token_type;
+void print_menu_of_day(tok_t *tokens,const char *js,int count){
 
-    for(int a;a<count;a++){
 
-        switch(toktok->type){
-        case 0: token_type = "UNDEFINED"; break;
-        case 1: token_type = "OBJECT"; break;
-        case 2: token_type = "ARRAY"; break;
-        case 3: token_type = "STRING"; break;
-        case 4: token_type = "PRIMITIVE"; break;
+    char str[50];
+    int a;
+
+    printf("\nEnter any day of the week to show its menu : ");
+    scanf("%s",str);
+    getchar();
+    for(a=1;a<count;a++){
+        if(jsoneq(js,&tokens[a],str)==0){
+            printf("Menu of %s is %.*s\n",str,
+            tokens[a+1].end-tokens[a+1].start,js+tokens[a+1].start);
+            break;
         }
-        /*
-        fprintf(fp2,"[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
-        fprintf(fp2,"(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
-        */
-
-        printf("[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
-        printf("(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
-
-        j++;
-        toktok = &tokens[j];
     }
-    /*fclose(fp2);*/
 }
+
+int jsoneq(const char *json, tok_t *tok,const char *s){
+    if(tok->type == STRING && (int)strlen(s) == tok->end - tok->start &&  
+    strncmp(json + tok->start,s,tok->end - tok->start)==0){
+        return 0;
+    }
+    return -1;
+} 
 void print_frequency_of_sepcific_meals(tok_t* tokens, char * data, int count)
 {
     char user[20] = { '\0',};
@@ -346,7 +343,37 @@ void print_week_plan_and_cost(tok_t* tokens, char* data, int count)
         i++;
     }
 }
+void print_tokens(js_parser* p, tok_t * tokens, char * data, int count)
+{
+   /*print out information of tokens*/
+    js_parser_init(p); 
+    int j = 0;
+    tok_t* toktok = &tokens[j];
+    /*FILE *fp2 = fopen("tokens_info.txt","w+");*/
+    char* token_type;
 
+    for(int a;a<count;a++){
+
+        switch(toktok->type){
+        case 0: token_type = "UNDEFINED"; break;
+        case 1: token_type = "OBJECT"; break;
+        case 2: token_type = "ARRAY"; break;
+        case 3: token_type = "STRING"; break;
+        case 4: token_type = "PRIMITIVE"; break;
+        }
+        /*
+        fprintf(fp2,"[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
+        fprintf(fp2,"(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
+        */
+
+        printf("[%d] %.*s ",j, (toktok->end) - (toktok->start), data + (toktok->start));
+        printf("(Size=%d, %d~%d, %s)\n", toktok->size, toktok->start,toktok->end, token_type);
+
+        j++;
+        toktok = &tokens[j];
+    }
+    /*fclose(fp2);*/
+}
 /*Function Definition*/
 static void js_parser_init(js_parser *parser)
 {
