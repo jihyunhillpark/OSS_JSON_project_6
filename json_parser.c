@@ -196,25 +196,30 @@ int main (int argc,char **argv){
     tokens[0].size=pair_count;
 
     char option;
-    option = print_applicaion_menu();
 
-    switch(option)
-    {
-        case '1' : print_menu_of_day(tokens,data,count);break;
-        case '2' : print_frequency_of_sepcific_meals(tokens, data, count); break;
-        case '3' : print_week_plan_and_cost(tokens,data,count); break;
-        case '4' : print_tokens(&p, tokens, data, count); break;
+    while(1){
+    
+        option = print_applicaion_menu();
+
+        switch(option)
+        {
+            case '1' : print_menu_of_day(tokens,data,count);break;
+            case '2' : print_frequency_of_sepcific_meals(tokens, data, count); break;
+            case '3' : print_week_plan_and_cost(tokens,data,count); break;
+            case '4' : print_tokens(&p, tokens, data, count); break;
+            case 'q' : return 0; break; 
+        }
     }
-
 }
 char print_applicaion_menu()
 {
     char a;
-    printf("==============================Options==============================\n");
+    printf("\n\n==============================Options==============================\n");
     printf("1. View menu by day\n");
     printf("2. Frequency of specific menu by user.\n");
     printf("3. Total expenditure on food expenses\n");
     printf("4. Print out tokens\n");
+    printf("q. exit\n");
     printf("===================================================================\n");  
     scanf("%c", &a);
     getchar();
